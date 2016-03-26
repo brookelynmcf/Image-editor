@@ -12,10 +12,18 @@ def get_user_file(user_file, readwrite):
             return correct_File#If there is no issues with the file that the user has entered, the file is returned and ready to use
 
 def get_filter(question, acceptable_answers):
+    """Get input from user, decide what filter they would like to use"""
     while True:
         choice = input(question)
         if choice=="1":
             print("It works!!")
+        elif choice == "2":
+            print("woah buddy!")
+        elif choice == "3":
+            print("kick ass!")
+        else:
+            print("incorrect input, please choose from 1, 2, or 3.")
+
 
 
 
