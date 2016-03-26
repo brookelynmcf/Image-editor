@@ -1,0 +1,24 @@
+def get_user_file(user_file, readwrite):
+    """get the name of the file to be edited from the user. Error check and print a prompt if an error is thrown."""
+    while True:
+        file_given = input(user_file)#getting the input the user has entered
+        try:
+            correct_File = open(file_given, readwrite)
+        except FileNotFoundError:
+            print("File name incorrect, please try again.")#Error handling for FileNotFoundError
+        except IOError:
+            print("IOError, please try again.")#Error handling for IOError
+        else:
+            return correct_File#If there is no issues with the file that the user has entered, the file is returned and ready to use
+
+def get_filter(question, acceptable_answers):
+    while True:
+        choice = input(question)
+        if acceptable_answers=="1":
+            print("It works!!")
+
+
+
+user_file = get_user_file("What is that name of the picture file you would like to edit?","r")
+file_created = get_user_file("Please name a file you would like to write your image too.","w")
+user_filter = get_filter("choose one of the following; 1.)Grayscale 2.)Vintage 3.)Quit",["1","2","3"]).lower()
