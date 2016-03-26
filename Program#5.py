@@ -14,7 +14,7 @@ def get_user_file(user_file, readwrite):
 def get_filter(question, acceptable_answers):
     while True:
         choice = input(question)
-        if acceptable_answers=="1":
+        if choice=="1":
             print("It works!!")
 
 
