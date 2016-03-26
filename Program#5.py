@@ -18,15 +18,14 @@ def get_filter(question, acceptable_answers):
         if choice in acceptable_answers:
             return choice
 
-def check_format(user_file):
+def check_format(user_file):#Need to come back and finish this!!!
     lst = user_file.readlines()
     if "P3" in lst[0]:
-        print("P3")
         if "255" in lst[2]:
-            print("255")
-    elif "P3" not in lst:
-        print("The file you have submitted is not the correct file type. Please try another file.")
-
+            converted = lst[3:]
+        elif "P3" not in lst:
+            print("The file you have submitted is not the correct file type. Please try another file.")
+    return converted
 
 
 
@@ -38,8 +37,15 @@ file_created = get_user_file("Please name a file you would like to write your im
 user_filter = get_filter("choose one of the following; 1.)Grayscale 2.)Vintage 3.)Quit",["1","2","3"]).lower()
 
 if user_filter=="1":
-    check_format(user_file)
-    print("It works!!")
+    #check_format(user_file)
+    list_file = []
+    for line in user_file:
+        list_file.append(line.strip("\n"))
+    for item in list_file[3:]:
+        print(item)
+
+
+
 elif user_filter == "2":
     print("woah buddy!")
 elif user_filter == "3":
