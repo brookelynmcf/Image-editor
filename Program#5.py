@@ -29,11 +29,7 @@ def check_format(user_file):
 
 
 
-#while True:
 user_file = get_user_file("What is that name of the picture file you would like to edit?","r")
-    #if check_format(user_file)==True:
-        #break
-
 file_created = get_user_file("Please name a file you would like to write your image too.","w")
 user_filter = get_filter("choose one of the following; 1.)Grayscale 2.)Vintage 3.)Quit (please choose 1, 2 or 3)",["1","2","3"])
 
@@ -77,3 +73,6 @@ while True:
         break
     else:
         print("incorrect input, please choose from 1, 2, or 3.")
+
+user_file.close()
+file_created.close()
