@@ -19,25 +19,28 @@ def get_filter(question, acceptable_answers):
         if choice in acceptable_answers:
             return choice
 
-def check_format(user_file):
+#def get_format(user_file):
     """checks format of file to see if it is a ppm file. firs line should contain P3 and third line should contain 255"""
-    lst = user_file.readlines()
-    if "P3" not in lst[0] or "255" not in lst[2]:
-        print("The file you have submitted is not the correct file type. Please try another file.")
-        return False
-    return True
+    #while True:
+    # lst = user_file.readlines()
 
 
 
-user_file = get_user_file("What is that name of the picture file you would like to edit?","r")
-file_created = get_user_file("Please name a file you would like to write your image too.","w")
-user_filter = get_filter("choose one of the following; 1.)Grayscale 2.)Vintage 3.)Quit (please choose 1, 2 or 3)",["1","2","3"])
+
 
 while True:
+    user_file = get_user_file("What is that name of the picture file you would like to edit?","r")
+    file_created = get_user_file("Please name a file you would like to write your image too.","w")
+    user_filter = get_filter("choose one of the following; 1.)Grayscale 2.)Vintage 3.)Quit (please choose 1, 2 or 3)",["1","2","3"])
+
+    list_file = []
+    for line in user_file:
+        list_file.append(line.strip("\n"))
+    if "P3" not in list_file[0] or "255" not in list_file[2]:
+        print("The file you have submitted is not the correct file type. Please try another file.")
+        continue
+
     if user_filter=="1":
-        list_file = []
-        for line in user_file:
-            list_file.append(line.strip("\n"))
         for line in list_file[0:3]:
             file_created.write(line+"\n")
         new_list = list_file[3:]
@@ -52,9 +55,6 @@ while True:
 
 
     elif user_filter == "2":
-        list_file = []
-        for line in user_file:
-            list_file.append(line.strip("\n"))
         for line in list_file[0:3]:
             file_created.write(line+"\n")
         new_list = list_file[3:]
