@@ -89,7 +89,7 @@ def get_filter(question, acceptable_answers):
 while True:
     user_file = get_user_file("What is that name of the picture file you would like to edit?","r")
     file_created = get_user_file("Please name a file you would like to write your image too.","w")
-    user_filter = get_filter("choose one of the following; 1.)Grayscale 2.)Vintage 3.)Quit (please choose 1, 2 or 3)",["1","2","3"])
+    user_filter = get_filter("choose one of the following:\n 1.)Grayscale\n 2.)Vintage\n 3.)Quit\n (please choose 1, 2 or 3)",["1","2","3"])
     #if the user chooses 3, the program will quit
     if user_filter == "3":
         break
@@ -120,6 +120,7 @@ while True:
             blue_color = int(pixel[2])*0.114
             total_pixel = red_color+green_color+blue_color
             file_created.write((str(total_pixel)+"\n")*3)
+        print("\nYour grayscale photo is ready.")
         break
 
     #if user choice is 2, the file is converted to the vintage filter
@@ -140,6 +141,7 @@ while True:
             file_created.write(str(red_color)+"\n")
             file_created.write(str(green_color)+"\n")
             file_created.write(str(blue_color)+"\n")
+        print("\nYour vintage photo is ready.")
         break
 
     #Error handling for if user does not put in correct input for what filter they would like to use
